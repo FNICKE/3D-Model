@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Model Studio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="background-animation" id="bgAnimation"></div>
+
+    <div class="container">
+        <div id="viewport">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <div>Loading 3D Scene...</div>
+            </div>
+            <div class="fps-counter">
+                FPS: <span class="fps-value" id="fpsCounter">60</span>
+            </div>
+        </div>
+        
+        <div class="control-panel">
+            <div class="panel-header">
+                <h1>3D Studio</h1>
+                <p>Professional 3D Model Viewer</p>
+            </div>
+            
+            <!-- Tabbed Interface -->
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="model">Model</button>
+                    <button class="tab-button" data-tab="appearance">Appearance</button>
+                </div>
+
+                <!-- Model Tab -->
+                <div class="tab-content active" id="tab-model">
+                    <!-- Model Selection -->
+                    <div class="control-group">
+                        <label>Choose Model</label>
+                        <div class="model-grid">
+                            <div class="model-card active" data-model="cube">
+                                <input type="radio" name="model" value="cube" id="cube" checked>
+                                <span class="model-icon">⬛</span>
+                                <div class="model-name">Cube</div>
+                            </div>
+                            <div class="model-card" data-model="sphere">
+                                <input type="radio" name="model" value="sphere" id="sphere">
+                                <span class="model-icon">⚫</span>
+                                <div class="model-name">Sphere</div>
+                            </div>
+                            <div class="model-card" data-model="torus">
+                                <input type="radio" name="model" value="torus" id="torus">
+                                <span class="model-icon">⭕</span>
+                                <div class="model-name">Torus</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appearance Tab -->
+                <div class="tab-content" id="tab-appearance">
+                    <!-- Color Picker -->
+                    <div class="control-group">
+                        <label>Material Color</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="colorPicker" value="#00ff88">
+                        </div>
+                    </div>
+
+                    <!-- Rotation Speed -->
+                    <div class="control-group">
+                        <div class="slider-wrapper">
+                            <div class="slider-label">
+                                <label>Animation Speed</label>
+                                <span class="speed-display" id="speedDisplay">0.010</span>
+                            </div>
+                            <div class="slider-container">
+                                <input type="range" id="speedSlider" min="0" max="0.05" step="0.001" value="0.01">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wireframe Toggle -->
+                    <div class="control-group">
+                        <div class="toggle-wrapper">
+                            <span class="toggle-label">Wireframe Mode</span>
+                            <div class="toggle-switch" id="wireframeToggle">
+                                <div class="toggle-knob"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="info-box">
+                <h3>Controls & Features</h3>
+                <ul>
+                    <li>Click and drag to orbit camera around model</li>
+                    <li>Select different 3D geometric shapes</li>
+                    <li>Customize colors with live preview</li>
+                    <li>Adjust rotation speed in real-time</li>
+                    <li>Toggle between solid and wireframe view</li>
+                    <li>Professional lighting and shadow system</li>
+                </ul>
+            </div>
+
+            <!-- Model Info -->
+            <div class="model-info">
+                <div class="current-model" id="modelName">Cube</div>
+                <div class="model-description" id="modelDescription">Box geometry with 6 faces</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fab" id="resetCamera" title="Reset Camera"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
